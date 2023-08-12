@@ -1,0 +1,17 @@
+{
+  "name": "QuickEye.Samples.SingletonAssets",
+  "rootNamespace": "QuickEye.Samples.SingletonAssets",
+  "references": [
+    "GUID:07ccd62b4443d194480040cde09607cc",
+    "OneAsset"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

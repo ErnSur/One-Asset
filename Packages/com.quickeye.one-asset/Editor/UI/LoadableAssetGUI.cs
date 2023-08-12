@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -5,12 +7,15 @@ namespace OneAsset.Editor.UI
 {
     internal static class LoadableAssetGUI
     {
-        private const string LinkedIcon =
-            "Packages/com.quickeye.utility/OneAsset/Editor/UI/Icons/Linked.png";
-
-        private const string UnlinkedIcon =
-            "Packages/com.quickeye.utility/OneAsset/Editor/UI/Icons/Unlinked.png";
+        private static readonly string LinkedIcon;
+        private static readonly string UnlinkedIcon;
         
+        static LoadableAssetGUI()
+        {
+            LinkedIcon = GetIconPath("OneAssetLinked","Linked");
+            UnlinkedIcon = GetIconPath("OneAssetUnLinked","Unlinked");
+        }
+
         public static GUIContent GetGuiContent(bool isCorrectPath, string loadPath, string typeName)
         {
             var iconContent = isCorrectPath
@@ -20,6 +25,22 @@ namespace OneAsset.Editor.UI
                 ? $"{typeName} can be loaded from this path"
                 : $"{typeName} won't load from this path. Load path:\n\"{loadPath}\"";
             return iconContent;
+        }
+
+        private static string GetIconPath(string iconLabel, string fallbackPath)
+        {
+            try
+            {
+                var path = AssetDatabase
+                    .FindAssets($"l:{iconLabel}")
+                    .Select(AssetDatabase.GUIDToAssetPath)
+                    .First();
+                return path;
+            }
+            catch (Exception)
+            {
+                return fallbackPath;
+            }
         }
     }
 }

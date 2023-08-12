@@ -114,4 +114,3 @@ Import the "Usage of singleton classes" from [Package Manager Window](https://do
 To avoid collisions with other packages with this code:
 - Make sure you delete the .meta files- use different guids for the scripts.
 - Change the name of assembly definition files and change the namespaces
-- Update absolute paths to icons in _OneAsset/Editor/UI/LoadableAssetGUI.cs_

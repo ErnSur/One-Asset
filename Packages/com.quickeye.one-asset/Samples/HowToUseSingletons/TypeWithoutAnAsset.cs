@@ -1,7 +1,6 @@
-using QuickEye.OneAsset;
 using UnityEngine;
 
-namespace QuickEye.Samples.SingletonAssets
+namespace QuickEye.OneAsset.HowToUseSingletons
 {
     public class TypeWithoutAnAsset : OneScriptableObject<TypeWithoutAnAsset>
     {

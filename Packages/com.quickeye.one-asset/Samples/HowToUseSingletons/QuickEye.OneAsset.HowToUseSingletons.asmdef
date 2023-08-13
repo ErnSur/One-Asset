@@ -1,0 +1,16 @@
+{
+  "name": "QuickEye.OneAsset.HowToUseSingletons",
+  "rootNamespace": "QuickEye.OneAsset.HowToUseSingletons",
+  "references": [
+    "QuickEye.OneAsset"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

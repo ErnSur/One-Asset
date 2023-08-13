@@ -1,7 +1,6 @@
-﻿using QuickEye.OneAsset;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace QuickEye.Samples.SingletonAssets
+namespace QuickEye.OneAsset.HowToUseSingletons
 {
     /// <summary>
     /// Creates a new Project Settings Window page using <see cref="OneScriptableObject"/>

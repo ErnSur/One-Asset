@@ -1,8 +1,7 @@
-﻿using QuickEye.OneAsset;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace QuickEye.Samples.SingletonAssets
+namespace QuickEye.OneAsset.HowToUseSingletons
 {
     /// <summary>
     /// Adding <see cref="LoadFromAssetAttribute"/> to the <see cref="OneGameObject"/> will add a new behaviour.

@@ -1,7 +1,6 @@
-using QuickEye.OneAsset;
 using UnityEngine;
 
-namespace QuickEye.Samples.SingletonAssets
+namespace QuickEye.OneAsset.HowToUseSingletons
 {
     /// <summary>
     /// A ScriptableObject singleton
@@ -16,7 +15,7 @@ namespace QuickEye.Samples.SingletonAssets
     [LoadFromAsset(Path, AssetIsMandatory = true, CreateAssetIfMissing = true)]
     public class TypeWithMandatoryAsset : OneScriptableObject<TypeWithMandatoryAsset>
     {
-        private const string Path = "Assets/Samples/Settings/Resources/" + nameof(TypeWithMandatoryAsset);
+        private const string Path = "Assets/Samples/Settings/Resources/" + nameof(TypeWithMandatoryAsset)+".asset";
 
         [TextArea(10,30)]
         public string Description =

@@ -1,7 +1,6 @@
-using QuickEye.OneAsset;
 using UnityEngine;
 
-namespace QuickEye.Samples.SingletonAssets
+namespace QuickEye.OneAsset.HowToUseSingletons
 {
     /// <summary>
     /// Load Asset from Resources folder Example
@@ -10,7 +9,7 @@ namespace QuickEye.Samples.SingletonAssets
     [LoadFromAsset(ResourcesPath, AssetIsMandatory = false)]
     public class TypeWithOptionalAsset : OneScriptableObject<TypeWithOptionalAsset>
     {
-        private const string ResourcesPath = "no path (example of optional asset)";
+        private const string ResourcesPath = "Assets/Resources/OptionalAsset";
 
         [TextArea]
         public string Description =

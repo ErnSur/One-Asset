@@ -1,8 +1,8 @@
 {
-  "name": "QuickEye.Samples.SingletonAssets",
-  "rootNamespace": "QuickEye.Samples.SingletonAssets",
+  "name": "QuickEye.OneAsset.GlobalHelpers",
+  "rootNamespace": "QuickEye.OneAsset.GlobalHelpers",
   "references": [
-    "GUID:bb11a1490c32abc41a7ec5097d79e4a9"
+    "QuickEye.OneAsset"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

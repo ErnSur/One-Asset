@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OneAsset.Editor.Tests.SampleAssets
+namespace QuickEye.OneAsset.Editor.Tests.SampleAssets
 {
     [LoadFromAsset(AbsoluteAssetPath, CreateAssetIfMissing = true)]
     internal class SoWithCreateAutomatically : ScriptableObject

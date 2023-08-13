@@ -2,7 +2,7 @@
 using UnityEditor;
 using Object = UnityEngine.Object;
 
-namespace OneAsset.Editor.UI
+namespace QuickEye.OneAsset.Editor.UI
 {
     internal static class LoadFromAssetCache
     {

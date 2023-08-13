@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OneAsset.Editor.Tests.SampleAssets
+namespace QuickEye.OneAsset.Editor.Tests.SampleAssets
 {
     [LoadFromAsset("Resources/"+FirstResourcesPath, Priority = 3)]
     [LoadFromAsset("Resources/"+SecondResourcesPath, Priority = 2)]

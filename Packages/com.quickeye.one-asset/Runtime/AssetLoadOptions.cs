@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OneAsset
+namespace QuickEye.OneAsset
 {
     public class AssetLoadOptions
     {

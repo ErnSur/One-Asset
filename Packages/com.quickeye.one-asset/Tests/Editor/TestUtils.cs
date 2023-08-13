@@ -2,11 +2,11 @@ using System;
 using System.IO;
 using System.Linq;
 using NUnit.Framework;
-using OneAsset.Editor.Tests.SampleAssets;
+using QuickEye.OneAsset.Editor.Tests.SampleAssets;
 using UnityEditor;
 using UnityEngine;
 
-namespace OneAsset.Editor.Tests
+namespace QuickEye.OneAsset.Editor.Tests
 {
     public static class TestUtils
     {

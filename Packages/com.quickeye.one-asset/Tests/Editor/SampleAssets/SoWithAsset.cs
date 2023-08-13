@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OneAsset.Editor.Tests.SampleAssets
+namespace QuickEye.OneAsset.Editor.Tests.SampleAssets
 {
     [LoadFromAsset("Resources/"+ResourcesPath)]
     internal class SoWithAsset : ScriptableObject

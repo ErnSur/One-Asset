@@ -2,8 +2,7 @@
   "name": "QuickEye.Samples.SingletonAssets",
   "rootNamespace": "QuickEye.Samples.SingletonAssets",
   "references": [
-    "GUID:07ccd62b4443d194480040cde09607cc",
-    "OneAsset"
+    "GUID:bb11a1490c32abc41a7ec5097d79e4a9"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

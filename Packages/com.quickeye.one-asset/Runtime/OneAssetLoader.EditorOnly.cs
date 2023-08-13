@@ -8,10 +8,11 @@ using UnityEditor;
 #endif
 
 
-namespace OneAsset
+namespace QuickEye.OneAsset
 {
     // Ideally this code would be in editor assembly. But these methods need to be accessible from InitializeOnLoad
     // there is no guarantee that editor callback will be registered like with `CreateAssetAction`
+    // could use reflection
     public static partial class OneAssetLoader
     {
         private static bool TryLoadFromAssetDatabase(Type type, AssetPath path, out Object obj)

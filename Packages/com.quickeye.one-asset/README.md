@@ -113,4 +113,4 @@ Import the "Usage of singleton classes" from [Package Manager Window](https://do
 ## Embedding this code in a package
 To avoid collisions with other packages with this code:
 - Make sure you delete the .meta files- use different guids for the scripts.
-- Change the name of assembly definition files and change the namespaces
+- Change the assembly names in assembly definition files and namespaces

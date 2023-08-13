@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace OneAsset
+namespace QuickEye.OneAsset
 {
     using static AssetLoadOptionsUtility;
     /// <summary>

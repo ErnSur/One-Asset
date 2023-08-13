@@ -1,4 +1,4 @@
-namespace OneAsset.Tests.SampleAssets
+namespace QuickEye.OneAsset.Tests.SampleAssets
 {
     [LoadFromAsset("Resources/"+ResourcesPath)]
     internal class GameObjectWithPrefab : OneGameObject<GameObjectWithPrefab>

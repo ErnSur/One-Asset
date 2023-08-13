@@ -1,9 +1,9 @@
 using System.IO;
 using NUnit.Framework;
-using OneAsset.Editor.Tests.SampleAssets;
+using QuickEye.OneAsset.Editor.Tests.SampleAssets;
 using UnityEditor;
 
-namespace OneAsset.Editor.Tests
+namespace QuickEye.OneAsset.Editor.Tests
 {
     using static TestUtils;
     [TestOf(typeof(OneAssetLoader))]

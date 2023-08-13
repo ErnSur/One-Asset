@@ -1,14 +1,12 @@
 {
-    "name": "OneAsset.Editor.Tests",
-    "rootNamespace": "OneAsset.Editor.Tests",
+    "name": "QuickEye.OneAsset.Tests",
+    "rootNamespace": "QuickEye.OneAsset.Tests",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "OneAsset"
+        "QuickEye.OneAsset"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,

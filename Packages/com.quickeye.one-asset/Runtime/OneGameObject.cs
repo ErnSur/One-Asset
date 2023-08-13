@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OneAsset
+namespace QuickEye.OneAsset
 {
     /// <summary>
     /// Adds singleton behaviour to descendant classes.

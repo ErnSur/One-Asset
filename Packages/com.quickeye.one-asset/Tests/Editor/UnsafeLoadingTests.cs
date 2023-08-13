@@ -1,9 +1,9 @@
 using System.IO;
 using NUnit.Framework;
-using OneAsset.Editor.Tests.SampleAssets;
+using QuickEye.OneAsset.Editor.Tests.SampleAssets;
 using UnityEngine;
 
-namespace OneAsset.Editor.Tests
+namespace QuickEye.OneAsset.Editor.Tests
 {
     public class UnsafeLoadingTests
     {

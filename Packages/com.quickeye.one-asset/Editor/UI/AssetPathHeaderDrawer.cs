@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace OneAsset.Editor.UI
+namespace QuickEye.OneAsset.Editor.UI
 {
     using static LoadableAssetGUI;
 

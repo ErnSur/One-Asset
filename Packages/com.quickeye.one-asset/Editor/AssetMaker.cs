@@ -4,7 +4,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace OneAsset.Editor
+namespace QuickEye.OneAsset.Editor
 {
     internal static class AssetMaker
     {

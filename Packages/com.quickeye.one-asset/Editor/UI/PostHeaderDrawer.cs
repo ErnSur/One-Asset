@@ -1,4 +1,4 @@
-namespace OneAsset.Editor.UI
+namespace QuickEye.OneAsset.Editor.UI
 {
     internal abstract class PostHeaderDrawer
     {

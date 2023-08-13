@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace OneAsset.Editor.Tests
+namespace QuickEye.OneAsset.Editor.Tests
 {
     [TestOf(typeof(PathUtility))]
     public class PathUtilityTests

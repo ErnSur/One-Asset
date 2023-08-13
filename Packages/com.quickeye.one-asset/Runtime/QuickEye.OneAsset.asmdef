@@ -1,6 +1,6 @@
 {
-    "name": "OneAsset",
-    "rootNamespace": "OneAsset",
+    "name": "QuickEye.OneAsset",
+    "rootNamespace": "QuickEye.OneAsset",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

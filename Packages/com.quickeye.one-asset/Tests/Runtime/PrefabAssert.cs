@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 
-namespace OneAsset.Tests
+namespace QuickEye.OneAsset.Tests
 {
     public static class GameObjectAssert
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace OneAsset
+namespace QuickEye.OneAsset
 {
     /// <summary>
     /// Applies loading rules for <see cref="OneAssetLoader"/>

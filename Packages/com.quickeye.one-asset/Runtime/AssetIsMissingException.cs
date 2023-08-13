@@ -1,6 +1,6 @@
 using System;
 
-namespace OneAsset
+namespace QuickEye.OneAsset
 {
     public class AssetIsMissingException : Exception
     {

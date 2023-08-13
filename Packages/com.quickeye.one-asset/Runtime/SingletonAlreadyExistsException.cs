@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace OneAsset
+namespace QuickEye.OneAsset
 {
     public class SingletonAlreadyExistsException : Exception
     {

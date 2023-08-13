@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace OneAsset
+namespace QuickEye.OneAsset
 {
     internal static class AssetLoadOptionsUtility
     {

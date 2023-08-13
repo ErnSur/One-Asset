@@ -1,8 +1,8 @@
 {
-    "name": "OneAsset.Editor",
-    "rootNamespace": "OneAsset.Editor",
+    "name": "QuickEye.OneAsset.Editor",
+    "rootNamespace": "QuickEye.OneAsset.Editor",
     "references": [
-        "OneAsset"
+        "QuickEye.OneAsset"
     ],
     "includePlatforms": [
         "Editor"

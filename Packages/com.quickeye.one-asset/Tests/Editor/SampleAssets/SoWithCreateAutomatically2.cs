@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OneAsset.Editor.Tests.SampleAssets
+namespace QuickEye.OneAsset.Editor.Tests.SampleAssets
 {
     [LoadFromAsset(AbsoluteAssetPathNoExt, Priority = 2, CreateAssetIfMissing = true)]
     [LoadFromAsset(SecondaryAbsoluteAssetPath, Priority = 1)]

@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace OneAsset
+namespace QuickEye.OneAsset
 {
     internal class AssetPath
     {

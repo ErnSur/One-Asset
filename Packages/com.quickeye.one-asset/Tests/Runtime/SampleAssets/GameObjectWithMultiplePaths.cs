@@ -1,4 +1,4 @@
-namespace OneAsset.Tests.SampleAssets
+namespace QuickEye.OneAsset.Tests.SampleAssets
 {
     [LoadFromAsset(FirstResourcesPathNotValid, Priority = 2)]
     [LoadFromAsset("Resources/"+SecondaryResourcesPath, Priority = 1)]

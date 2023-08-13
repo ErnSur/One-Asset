@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace OneAsset.Editor.UI
+namespace QuickEye.OneAsset.Editor.UI
 {
     [InitializeOnLoad]
     internal static class PersistentPostHeaderManager

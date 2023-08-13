@@ -1,8 +1,8 @@
 using NUnit.Framework;
-using OneAsset.Editor.Tests.SampleAssets;
+using QuickEye.OneAsset.Editor.Tests.SampleAssets;
 using UnityEngine;
 
-namespace OneAsset.Editor.Tests
+namespace QuickEye.OneAsset.Editor.Tests
 {
     [TestOf(typeof(OneAssetLoader))]
     public class MultipleLoadPathsTests

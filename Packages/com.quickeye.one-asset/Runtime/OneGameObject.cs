@@ -25,8 +25,9 @@ namespace QuickEye.OneAsset
         /// <summary>
         /// MonoBehaviour's Awake Message. When overriden, class descendants need to call the base implementation of it to keep singleton behavior. 
         /// </summary>
+        /// <exception cref="SingletonAlreadyExistsException">Thrown if another instance of this class executed Awake before this one.</exception>
         protected virtual void Awake() => Initialize();
-
+        
         private void Initialize()
         {
             if (_instance != this)
@@ -77,9 +78,9 @@ namespace QuickEye.OneAsset
             var prefab = OneAssetLoader.Load<T>();
             if (prefab == null)
                 return CreateGameObject();
-            var component = Instantiate(prefab);
-            component.name = typeof(T).Name;
-            return component;
+            var clone = Instantiate(prefab);
+            clone.name = typeof(T).Name;
+            return clone;
         }
         
         private static T CreateGameObject()

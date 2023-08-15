@@ -2,16 +2,6 @@ using UnityEngine;
 
 namespace QuickEye.OneAsset.HowToUseSingletons
 {
-    /// <summary>
-    /// A ScriptableObject singleton
-    /// It defines a path from which it should be loaded from.
-    /// And another path in which the asset should be created if it does not exists.
-    ///
-    /// The <see cref="LoadFromAssetAttribute"/> defines a path from which asset will be loaded when `Instance` is requested.
-    /// 
-    /// The <see cref="LoadFromAssetAttribute.CreateAssetIfMissing"/> turns on a editor-only system that will create scriptable object file at specific path
-    /// if it cannot be loaded from a path defined in <see cref="LoadFromAssetAttribute"/>
-    /// </summary>
     [LoadFromAsset(Path, AssetIsMandatory = true, CreateAssetIfMissing = true)]
     public class TypeWithMandatoryAsset : OneScriptableObject<TypeWithMandatoryAsset>
     {

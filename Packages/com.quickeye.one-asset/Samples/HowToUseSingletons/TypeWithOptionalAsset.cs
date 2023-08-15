@@ -2,10 +2,6 @@ using UnityEngine;
 
 namespace QuickEye.OneAsset.HowToUseSingletons
 {
-    /// <summary>
-    /// Load Asset from Resources folder Example
-    /// Singleton with path from which it should be loaded from.
-    /// </summary>
     [LoadFromAsset(ResourcesPath, AssetIsMandatory = false)]
     public class TypeWithOptionalAsset : OneScriptableObject<TypeWithOptionalAsset>
     {

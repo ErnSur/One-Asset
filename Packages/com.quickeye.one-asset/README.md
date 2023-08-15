@@ -108,7 +108,7 @@ public class SuperSdkSettings : OneScriptableObject<SuperSdkSettings>
 ```
 
 ## Samples
-Import the "Usage of singleton classes" from [Package Manager Window](https://docs.unity3d.com/Manual/upm-ui-details.html)
+Import samples from [Package Manager Window](https://docs.unity3d.com/Manual/upm-ui-details.html)
 
 ## Embedding this code in a package
 To avoid collisions with other packages with this code:

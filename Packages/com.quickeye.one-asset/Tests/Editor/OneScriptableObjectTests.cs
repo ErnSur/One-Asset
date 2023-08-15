@@ -7,12 +7,12 @@ namespace QuickEye.OneAsset.Editor.Tests
     [TestOf(typeof(OneScriptableObject<>))]
     public class OneScriptableObjectTests
     {
-        private SsoWithNoAsset _instance;
+        private OsoWithNoAsset _instance;
 
         [SetUp]
         public void Setup()
         {
-            _instance = SsoWithNoAsset.Instance;
+            _instance = OsoWithNoAsset.Instance;
         }
 
         [TearDown]
@@ -30,16 +30,27 @@ namespace QuickEye.OneAsset.Editor.Tests
         [Test]
         public void Should_ReturnSameInstance_When_OneInstanceExists()
         {
-            var actual = SsoWithNoAsset.Instance;
+            var actual = OsoWithNoAsset.Instance;
             Assert.AreEqual(_instance, actual);
         }
-        
+
         [Test]
         public void Should_CreateNewInstance_When_ExistingOneWasDestroyed()
         {
             Object.DestroyImmediate(_instance);
 
-            Assert.NotNull(SsoWithNoAsset.Instance);
+            Assert.NotNull(OsoWithNoAsset.Instance);
+        }
+
+        [Test]
+        public void Should_ReturnAsset_When_HasLoadFromAttribute()
+        {
+            var asset = Resources.Load<OsoWithAsset>(OsoWithAsset.ResourcesPath);
+            Assert.NotNull(asset);
+
+            var actual = OsoWithAsset.Instance;
+            
+            Assert.AreEqual(asset, actual);
         }
     }
 }

@@ -26,33 +26,11 @@ namespace QuickEye.OneAsset.Editor.UI
             LoadOptions = AssetLoadOptionsUtility.GetLoadOptions(type);
         }
         
+        
         public bool IsInLoadablePath(out AssetPath loadPath)
         {
             var assetPath = AssetDatabase.GetAssetPath(Asset);
-            if (string.IsNullOrEmpty(assetPath))
-            {
-                loadPath = null;
-                return false;
-            }
-
-            foreach (var loadablePath in LoadOptions.AssetPaths)
-            {
-                if (loadablePath.IsInResourcesFolder &&
-                    assetPath.EndsWith(loadablePath.ResourcesPath + loadablePath.Extension))
-                {
-                    loadPath = loadablePath;
-                    return true;
-                }
-
-                if (loadablePath.OriginalPath == assetPath)
-                {
-                    loadPath = loadablePath;
-                    return true;
-                }
-            }
-
-            loadPath = null;
-            return false;
+            return LoadOptions.TryGetLoadAssetPath(assetPath, out loadPath);
         }
     }
 }

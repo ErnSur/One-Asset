@@ -54,6 +54,7 @@ namespace QuickEye.OneAsset.Editor.Tests
         {
             Asset = TestUtils.CreateTestSoAsset(path);
             //Debug.Log($"Created asset at: {AssetDatabase.GetAssetPath(Asset)}");
+            Assert.NotNull(Asset);
             Assert.IsTrue(AssetDatabase.Contains(Asset));
         }
 

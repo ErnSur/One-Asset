@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace QuickEye.OneAsset
@@ -55,6 +56,39 @@ namespace QuickEye.OneAsset
         private static string CleanPath(string path)
         {
             return path.TrimStart('/');
+        }
+        
+        internal bool TryGetLoadAssetPath(string fullAssetPath, out AssetPath loadPath)
+        {
+            if (string.IsNullOrEmpty(fullAssetPath))
+            {
+                loadPath = null;
+                return false;
+            }
+
+            foreach (var loadablePath in AssetPaths)
+            {
+                if (IsPointingToTheSameResourcesFile(fullAssetPath, loadablePath))
+                {
+                    loadPath = loadablePath;
+                    return true;
+                }
+
+                if (loadablePath.OriginalPath == fullAssetPath)
+                {
+                    loadPath = loadablePath;
+                    return true;
+                }
+            }
+
+            loadPath = null;
+            return false;
+        }
+
+        private static bool IsPointingToTheSameResourcesFile(string fullAssetPath,
+            AssetPath loadablePath)
+        {
+            return loadablePath.IsInResourcesFolder && fullAssetPath.EndsWith($"Resources/{loadablePath.ResourcesPath}{loadablePath.Extension}");
         }
     }
 }

@@ -29,11 +29,7 @@ namespace QuickEye.OneAsset
         private static T LoadOrCreate()
         {
             var asset = OneAssetLoader.Load<T>();
-            if (asset == null)
-                return CreateScriptableObject();
-            var component = Instantiate(asset);
-            component.name = typeof(T).Name;
-            return component;
+            return asset != null ? asset : CreateScriptableObject();
         }
         
         private static T CreateScriptableObject()

@@ -1,0 +1,16 @@
+{
+    "name": "QuickEye.EventSystem",
+    "rootNamespace": "QuickEye.EventSystem",
+    "references": [
+        "QuickEye.OneAsset"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

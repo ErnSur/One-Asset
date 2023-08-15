@@ -1,0 +1,7 @@
+{
+  "name": "EventSystem.Samples",
+  "rootNamespace": "EventSystem.Samples",
+  "references": [
+    "QuickEye.EventSystem"
+  ]
+}

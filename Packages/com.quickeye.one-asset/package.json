@@ -12,5 +12,5 @@
       "path": "Samples~/SingletonAssets"
     }
   ],
-  "description": "- `OneAssetLoader`\n- `OneGameObject<T>`\n- `OneScriptableObject<T>`"
+  "description": "Extended asset loader and the best singleton implementation for Unity."
 }

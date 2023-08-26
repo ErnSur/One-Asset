@@ -1,7 +1,7 @@
 {
   "name": "com.quickeye.one-asset",
   "displayName": "One Asset",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "unity": "2020.3",
   "author": "Quick Eye",
   "type": "library",

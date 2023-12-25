@@ -15,7 +15,6 @@ namespace QuickEye.OneAsset.Editor
                 from type in assembly.GetTypes()
                 where Attribute.IsDefined(type, typeof(SettingsProviderAssetAttribute))
                 where Attribute.IsDefined(type, typeof(LoadFromAssetAttribute))
-                where typeof(OneScriptableObject).IsAssignableFrom(type)
                 let settingsAssetAttribute = type.GetCustomAttribute<SettingsProviderAssetAttribute>()
                 let provider = CreateSettingsProvider(settingsAssetAttribute.SettingsWindowPath, type)
                 where provider != null
@@ -28,13 +27,10 @@ namespace QuickEye.OneAsset.Editor
         {
             try
             {
-                var prop = type.BaseType.GetProperty("Instance",
-                    BindingFlags.Public | BindingFlags.Static);
-                var obj = prop?.GetValue(null) as ScriptableObject;
-
+                var asset = LoadAsset(type);
                 var provider = AssetSettingsProvider.CreateProviderFromObject(
-                    settingsWindowPath, obj,
-                    SettingsProvider.GetSearchKeywordsFromSerializedObject(new SerializedObject(obj)));
+                    settingsWindowPath, asset,
+                    SettingsProvider.GetSearchKeywordsFromSerializedObject(new SerializedObject(asset)));
 
                 return provider;
             }
@@ -43,6 +39,14 @@ namespace QuickEye.OneAsset.Editor
                 Debug.LogError($"Failed to create a settings provider for: {type.Name}, {e}");
                 return null;
             }
+        }
+
+        private static ScriptableObject LoadAsset(Type type)
+        {
+            var loadOptions = AssetLoadOptionsUtility.GetLoadOptions(type);
+            loadOptions.AssetIsMandatory = true;
+            var asset = OneAssetLoader.Load(loadOptions, type) as ScriptableObject;
+            return asset;
         }
     }
 }

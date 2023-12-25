@@ -1,0 +1,17 @@
+{
+    "name": "libAsmdef",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bb11a1490c32abc41a7ec5097d79e4a9",
+        "GUID:7d313ed9987f8154c93456b649b8ef8e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

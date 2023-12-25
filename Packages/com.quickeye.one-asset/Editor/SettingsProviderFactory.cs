@@ -9,7 +9,7 @@ namespace QuickEye.OneAsset.Editor
     internal static class SettingsProviderFactory
     {
         [SettingsProviderGroup]
-        private static SettingsProvider[] GetProviders()
+        public static SettingsProvider[] GetProviders()
         {
             var providers = from assembly in AppDomain.CurrentDomain.GetAssemblies()
                 from type in assembly.GetTypes()

@@ -7,8 +7,31 @@ namespace QuickEye.OneAsset.Editor.Tests
 {
     using static TestUtils;
     [TestOf(typeof(OneAssetLoader))]
+    [InitializeOnLoad]
     public class AutomaticAssetCreationTests
     {
+        private static bool _initializeOnLoadTestsPassed;
+        static AutomaticAssetCreationTests()
+        {
+            RunInitializeOnLoadTests();
+        }
+
+        private static void RunInitializeOnLoadTests()
+        {
+            try
+            {
+                var tests = new AutomaticAssetCreationTests();
+                tests.Setup();
+                tests.Should_CreateNewAsset_When_TypeHasCreateAutomaticallyAttributeAndAssetIsMissing();
+                tests.Teardown();
+                tests.OneTimeTearDown();
+                _initializeOnLoadTestsPassed = true;
+            }
+            catch (AssertionException)
+            {
+            }
+        }
+
         [SetUp]
         public void Setup()
         {
@@ -25,6 +48,12 @@ namespace QuickEye.OneAsset.Editor.Tests
         public void OneTimeTearDown()
         {
             AssetDatabase.Refresh();
+        }
+
+        [Test]
+        public void InitializeOnLoadTests()
+        {
+            Assert.IsTrue(_initializeOnLoadTestsPassed);
         }
 
         [Test]

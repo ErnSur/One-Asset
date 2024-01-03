@@ -49,7 +49,7 @@ var asset = OneAssetLoader.Load<SampleScriptableObject>(loadOptions);
 Certain asset operations are unsafe to perform in `InitializeOnLoad` callbacks. Unity documentation states that:
 > Asset operations such as asset loading should be avoided in InitializeOnLoad methods. InitializeOnLoad methods are called before asset importing is completed and therefore the asset loading can fail resulting in a null object.
 
-Generally it is better to avoid loading assets in `InitializeOnLoad` callbacks. However, if you really need to do it, you can use the `OneAssetLoader` with the `AssetLoadOptions.LoadAndForget` option set to `true`. This will use the `UnityEditorInternal.InternalEditorUtility.LoadSerializedFileAndForget` as a fallback load option. This method is not documented, use with caution! Side effect of loading asset with this method is that the asset will not be managed by AssetDatabase, to preserve any changes to the loaded object you must save it with `InternalEditorUtility.SaveToSerializedFileAndForget` method.
+Generally it is better to avoid loading assets in `InitializeOnLoad` callbacks. However, if you really need to do it, you can use the `OneAssetLoader` with the `AssetLoadOptions.LoadAndForget` option set to `true`. This will use the `UnityEditorInternal.InternalEditorUtility.LoadSerializedFileAndForget` as a fallback load option. This loading option has side effects, use with caution! Side effect of loading asset with this method is that the loaded object is not treated as an asset by `AssetDatabase`, to preserve any changes to the loaded object you must save it with `InternalEditorUtility.SaveToSerializedFileAndForget` method.
 
 ## UnityEngine.Object and a Singleton pattern (Disclaimer)
 

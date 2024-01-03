@@ -130,8 +130,7 @@ namespace QuickEye.OneAsset
             return false;
         }
 
-        private static bool TryLoadFromResources(Type type, AssetPath path,
-            out Object obj)
+        private static bool TryLoadFromResources(Type type, AssetPath path, out Object obj)
         {
             if (path.IsInResourcesFolder)
             {

@@ -5,15 +5,23 @@ using Object = UnityEngine.Object;
 namespace QuickEye.OneAsset
 {
     using static AssetLoadOptionsUtility;
+
+    // API Ideas:
+    // 1. `public event Action<Object> AssetCreated;`
+    // 2. ability to create assets using `UnityEditorInternal.InternalEditorUtility.SaveToSerializedFileAndForget`
+    // 3. Pass custom asset creation logic in `AssetLoadOptions`
     /// <summary>
     /// <para>Loads assets with <see cref="AssetLoadOptions"/></para>
     /// </summary>
-    public static partial class OneAssetLoader
+    public static class OneAssetLoader
     {
-        //TODO: make it public all pass user data in AssetLoadOptions
-        // Update the TryCreateAsset delegate to return bool
-        // this way user can add custom asset creation logic
-        internal static TryCreateAsset CreateAssetAction;
+        private static readonly IOneAssetLoaderEditorFeatures EditorFeatures;
+
+        static OneAssetLoader()
+        {
+            if (Application.isEditor)
+                EditorFeatures = new OneAssetLoaderEditorFeatures();
+        }
 
         /// <summary>
         /// <para>Loads an asset with load options</para>
@@ -45,7 +53,7 @@ namespace QuickEye.OneAsset
 
             return null;
         }
-        
+
         /// <summary>
         /// <para>Loads an asset with load options</para>
         /// </summary>
@@ -58,7 +66,7 @@ namespace QuickEye.OneAsset
         {
             return Load(options, typeof(T)) as T;
         }
-        
+
         /// <summary>
         /// <para>Loads an asset with load options</para>
         /// <para>The <see cref="AssetLoadOptions"/> will be created based on the <see cref="LoadFromAssetAttribute"/> from asset type</para>
@@ -86,12 +94,15 @@ namespace QuickEye.OneAsset
 
         private static bool TryCreateAsset(Type type, AssetLoadOptions options)
         {
-            if (!Application.isEditor || CreateAssetAction == null)
+            if (!Application.isEditor)
                 return false;
+            if (EditorFeatures == null)
+                throw new NotImplementedException(
+                    "Asset trying to be created in editor, but editor features are missing.");
             var obj = ScriptableObject.CreateInstance(type);
             try
             {
-                CreateAssetAction(obj, options);
+                EditorFeatures.CreateAsset(obj, options);
                 return true;
             }
             catch (Exception e)
@@ -108,10 +119,10 @@ namespace QuickEye.OneAsset
                 if (TryLoadFromResources(type, path, out obj))
                     return true;
 
-                if (TryLoadFromAssetDatabase(type, path, out obj))
+                if (EditorFeatures?.TryLoadFromAssetDatabase(type, path, out obj) == true)
                     return true;
 
-                if (options.LoadAndForget && TryLoadAndForget(type, path, out obj))
+                if (options.LoadAndForget && EditorFeatures?.TryLoadAndForget(type, path, out obj) == true)
                     return true;
             }
 
@@ -119,8 +130,7 @@ namespace QuickEye.OneAsset
             return false;
         }
 
-        private static bool TryLoadFromResources(Type type, AssetPath path,
-            out Object obj)
+        private static bool TryLoadFromResources(Type type, AssetPath path, out Object obj)
         {
             if (path.IsInResourcesFolder)
             {

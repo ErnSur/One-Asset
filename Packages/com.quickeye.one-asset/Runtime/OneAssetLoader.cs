@@ -116,6 +116,10 @@ namespace QuickEye.OneAsset
         {
             foreach (var path in options.AssetPaths)
             {
+                // try to load from preloaded assets
+                // if (TryLoadFromPreloadedAssets(type, path, out obj))
+                //     return true;
+
                 if (TryLoadFromResources(type, path, out obj))
                     return true;
 
@@ -125,7 +129,7 @@ namespace QuickEye.OneAsset
                 if (options.LoadAndForget && EditorFeatures?.TryLoadAndForget(type, path, out obj) == true)
                     return true;
             }
-
+        
             obj = null;
             return false;
         }
@@ -137,6 +141,22 @@ namespace QuickEye.OneAsset
                 obj = Resources.Load(path.ResourcesPath, type);
                 if (obj != null)
                     return true;
+            }
+
+            obj = null;
+            return false;
+        }
+        
+        private static bool TryLoadFromPreloadedAssets(Type type, AssetPath path, out Object obj)
+        {
+            // how would it work for prefabs?
+            // they still would have to be at specific path, they would just be preloaded
+            
+
+            foreach (var asset in Resources.FindObjectsOfTypeAll(type))
+            {
+                obj = asset;
+                return true;
             }
 
             obj = null;

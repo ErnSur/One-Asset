@@ -21,6 +21,8 @@ namespace QuickEye.OneAsset.Editor.UI
         private static bool ShouldDrawHeader(UnityEditor.Editor editor, out AssetMetadata metadata)
         {
             metadata = null;
+            if(editor == null)
+                return false;
             return editor.targets.Length == 1 &&
                    EditorUtility.IsPersistent(editor.target) &&
                    LoadFromAssetCache.TryGetEntry(editor.serializedObject.targetObject, out metadata) &&

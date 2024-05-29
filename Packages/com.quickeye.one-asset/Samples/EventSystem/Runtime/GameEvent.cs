@@ -3,6 +3,14 @@ using UnityEngine.Events;
 
 namespace QuickEye.EventSystem
 {
+    // TODO:
+    // Generate Event asset as a GameEvents.asset sub-asset
+        // assets should be regenerated on recompile
+        // This would prevent old unused assets from piling up. Con: This would also delete assets that may still be referenced somewhere...
+        // TODO: how to handle event renames?
+        // This would force correct names for all of the events at all times
+        // easier to find events in the project
+    // Every Game Event should have it's own unique ID different from the name so that renames don't break the references
     public abstract class GameEvent<TArgs> : GameEventBase, IInvokable
     {
         [SerializeField]

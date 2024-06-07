@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.UIElements;
@@ -10,69 +9,39 @@ namespace QuickEye.EventSystem.Editor
     [CustomEditor(typeof(GameEventBase), true)]
     public class GameEventEditor : UnityEditor.Editor
     {
-        SerializedProperty descriptionProp;
-        SerializedProperty wasInvokedProp;
-        SerializedProperty eventProp;
-        SerializedProperty lastPayloadProp;
-
-        /// <summary>
-        /// null means: Mixed Values
-        /// </summary>
-        bool? WasInvoked => Targets.Any(eventBase => eventBase.WasInvoked != Target.WasInvoked) ? (bool?)null : Target.WasInvoked;
-
-        GameEventBase Target => (GameEventBase)target;
-        IEnumerable<GameEventBase> Targets => targets.Cast<GameEventBase>();
-
-        void OnEnable()
-        {
-            descriptionProp = serializedObject.FindProperty(nameof(DummyEvent.developerDescription));
-            eventProp = serializedObject.FindProperty("_event");
-            wasInvokedProp = serializedObject.FindProperty("wasInvoked");
-            lastPayloadProp = serializedObject.FindProperty("_lastPayload");
-        }
-
-        PropertyField NewPropertyField(SerializedProperty prop)
-        {
-            if (prop == null)
-                return null;
-            var field = new PropertyField(prop);
-            field.name = "PropertyField:" + prop.propertyPath;
-            return field;
-        }
-
         public override VisualElement CreateInspectorGUI()
         {
             var root = new VisualElement();
-            //AddPropertyField(root, wasInvokedProp);
-            var scriptField = NewPropertyField(serializedObject.FindProperty("m_Script"));
-            scriptField.SetEnabled(false);
-            var eventField = NewPropertyField(eventProp);
-            var wasInvokedField = NewPropertyField(wasInvokedProp);
-            var lastPayloadField = NewPropertyField(lastPayloadProp);
-            var descriptionField = NewPropertyField(descriptionProp);
-            var invokeButton = new Button(OnInvoke) { text = "Invoke" };
 
+            InspectorElement.FillDefaultInspector(root, serializedObject, this);
+
+            var wasInvokedField = root.Q<PropertyField>($"PropertyField:wasInvoked");
             wasInvokedField.SetEnabled(false);
-            descriptionField.SetEnabled(targets.All(EditorUtility.IsPersistent));
+
+            var lastPayloadField = root.Q<PropertyField>($"PropertyField:_lastPayload");
+
+            var invokeButton = new Button(OnInvoke) { name = "invoke-button", text = "Invoke" };
             invokeButton.SetEnabled(EditorApplication.isPlaying);
 
-            root.Add(scriptField);
-            root.Add(wasInvokedField);
-            //root.Add(eventField);
-            root.Add(lastPayloadField);
-            root.Add(invokeButton);
-            //root.Add(descriptionField);
+            var eventPropsContainer = new VisualElement
+                { name = "eventProps" };
+            eventPropsContainer.style.flexDirection = FlexDirection.Row;
+            eventPropsContainer.style.alignItems = Align.Center;
+            lastPayloadField.style.flexGrow = 1;
+            wasInvokedField.label = "";
+            eventPropsContainer.Add(invokeButton);
+            eventPropsContainer.Add(wasInvokedField);
+            eventPropsContainer.Add(lastPayloadField);
+            root.Add(eventPropsContainer);
             return root;
         }
 
-        void OnInvoke()
+        private void OnInvoke()
         {
-            foreach (IInvokable invokable in targets)
+            foreach (var invokable in targets.OfType<IInvokable>())
             {
-                invokable?.RepeatLastInvoke();
+                invokable.RepeatLastInvoke();
             }
         }
-
-        class DummyEvent : GameEvent<int> { }
     }
 }

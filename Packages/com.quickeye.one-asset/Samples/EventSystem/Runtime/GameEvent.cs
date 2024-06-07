@@ -17,6 +17,7 @@ namespace QuickEye.EventSystem
         TArgs _lastPayload;
 
         [SerializeField]
+        [HideInInspector]
         UnityEvent<TArgs> _event = new UnityEvent<TArgs>();
 
         public UnityEvent<TArgs> Event => _event;

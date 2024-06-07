@@ -5,11 +5,6 @@ namespace QuickEye.EventSystem
 {
     public abstract class GameEventBase : ScriptableObject
     {
-#if UNITY_EDITOR
-        [TextArea]
-        [SerializeField]
-        protected internal string developerDescription;
-#endif
         [SerializeField]
         protected bool wasInvoked;
 

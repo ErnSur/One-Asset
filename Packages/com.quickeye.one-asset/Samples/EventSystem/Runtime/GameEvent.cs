@@ -25,19 +25,11 @@ namespace QuickEye.EventSystem
         public void Subscribe(UnityAction<TArgs> callback)
         {
             Event.AddListener(callback);
-#if UNITY_EDITOR
-            //UnityEditor.Events.UnityEventTools.AddPersistentListener(Event, callback);
-#else
-#endif
         }
 
         public void Unsubscribe(UnityAction<TArgs> callback)
         {
             Event.RemoveListener(callback);
-#if UNITY_EDITOR
-            //UnityEditor.Events.UnityEventTools.RemovePersistentListener(Event, callback);
-#else
-#endif
         }
 
         public void Invoke(TArgs payload)

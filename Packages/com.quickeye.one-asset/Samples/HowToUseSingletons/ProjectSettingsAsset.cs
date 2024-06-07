@@ -7,7 +7,8 @@ namespace QuickEye.OneAsset.HowToUseSingletons
     /// with <see cref="LoadFromAssetAttribute"/> and <see cref="SettingsProviderAssetAttribute"/>
     /// </summary>
     [LoadFromAsset(AssetPath, AssetIsMandatory = true, CreateAssetIfMissing = true)]
-    [SettingsProviderAsset("Project/" + SettingsPageName)]
+    // Uncomment attribute below for the settings page to appear in the Project Settings window
+    //[SettingsProviderAsset("Project/" + SettingsPageName)]
     public class ProjectSettingsAsset : OneScriptableObject<ProjectSettingsAsset>
     {
         private const string AssetPath = "Assets/Samples/Settings/Resources/" + nameof(ProjectSettingsAsset);

@@ -8,6 +8,11 @@ namespace QuickEye.EventSystem
         public event Action Destroyed;
         public event Action Disabled;
 
+        private void Awake()
+        {
+            hideFlags = HideFlags.HideInInspector;
+        }
+
         void OnDestroy() => Destroyed?.Invoke();
         void OnDisable() => Disabled?.Invoke();
     }

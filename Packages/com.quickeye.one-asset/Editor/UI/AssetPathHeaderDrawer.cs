@@ -26,7 +26,7 @@ namespace QuickEye.OneAsset.Editor.UI
             return editor.targets.Length == 1 &&
                    EditorUtility.IsPersistent(editor.target) &&
                    LoadFromAssetCache.TryGetEntry(editor.serializedObject.targetObject, out metadata) &&
-                   metadata.LoadOptions.Paths.Length > 0;
+                       metadata.LoadOptions?.Paths?.Length > 0;
         }
 
         private readonly AssetMetadata _metadata;

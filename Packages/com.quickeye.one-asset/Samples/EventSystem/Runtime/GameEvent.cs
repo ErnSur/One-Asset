@@ -35,7 +35,7 @@ namespace QuickEye.EventSystem
 
         public virtual void Invoke(TArgs payload)
         {
-            Debug.Log($"[!] Invoke: {name} with: {payload}");
+            //Debug.Log($"[!] Invoke: {name} with: {payload}");
             Event?.Invoke(_lastPayload = payload);
             wasInvoked = true;
         }

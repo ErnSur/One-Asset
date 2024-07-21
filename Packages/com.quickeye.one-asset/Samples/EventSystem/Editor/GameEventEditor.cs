@@ -6,7 +6,9 @@ using UnityEngine.UIElements;
 namespace QuickEye.EventSystem.Editor
 {
     [CanEditMultipleObjects]
+#if !ODIN_INSPECTOR
     [CustomEditor(typeof(GameEventBase), true)]
+#endif
     public class GameEventEditor : UnityEditor.Editor
     {
         public override VisualElement CreateInspectorGUI()

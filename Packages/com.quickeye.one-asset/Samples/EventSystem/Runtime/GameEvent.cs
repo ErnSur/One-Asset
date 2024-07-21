@@ -15,6 +15,12 @@ namespace QuickEye.EventSystem
     // Every Game Event should have it's own unique ID different from the name so that renames don't break the references
     public abstract class GameEvent<TArgs> : GameEventBase, IInvokable
     {
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup("Event Properties")]
+        [Sirenix.OdinInspector.HorizontalGroup("Event Properties/Hor")]
+        //[Sirenix.OdinInspector.LabelWidth(80)]
+        [Sirenix.OdinInspector.PropertyOrder(15)]
+#endif
         [SerializeField]
         TArgs _lastPayload;
 
@@ -46,6 +52,11 @@ namespace QuickEye.EventSystem
             _lastPayload = default;
         }
 
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.HorizontalGroup("Event Properties/Hor",width:70)]
+        [Sirenix.OdinInspector.PropertyOrder(9)]
+        [Sirenix.OdinInspector.Button("Invoke")]
+#endif
         void IInvokable.RepeatLastInvoke() => Invoke(_lastPayload);
     }
 

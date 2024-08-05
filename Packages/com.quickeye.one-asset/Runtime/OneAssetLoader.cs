@@ -41,11 +41,8 @@ namespace QuickEye.OneAsset
                 return asset;
 
             // Try to create asset at path
-            if (options.CreateAssetIfMissing &&
-                typeof(ScriptableObject).IsAssignableFrom(assetType) &&
-                TryCreateAsset(assetType, options) &&
-                TryLoad(assetType, options, out asset))
-                return asset;
+            if (options.CreateAssetIfMissing && TryCreateAsset(assetType, options, out var so))
+                return so;
 
             // Throw if asset is mandatory
             if (options.AssetIsMandatory)
@@ -92,14 +89,19 @@ namespace QuickEye.OneAsset
             return Load(typeof(T)) as T;
         }
 
-        private static bool TryCreateAsset(Type type, AssetLoadOptions options)
+        private static bool TryCreateAsset(Type type, AssetLoadOptions options, out ScriptableObject obj)
         {
             if (!Application.isEditor)
-                return false;
-            if (EditorFeatures == null)
                 throw new NotImplementedException(
                     "Asset trying to be created in editor, but editor features are missing.");
-            var obj = ScriptableObject.CreateInstance(type);
+            
+            if (!typeof(ScriptableObject).IsAssignableFrom(type))
+            {
+                throw new ArgumentException(
+                    $"Type {type} is not a ScriptableObject and cannot be created as an asset.");
+            }
+            
+            obj = ScriptableObject.CreateInstance(type);
             try
             {
                 EditorFeatures.CreateAsset(obj, options);

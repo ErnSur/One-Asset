@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Fixed NRE in header drawer
+- Fixed asset creation from InitializeOnLoad callbacks in Unity 6
 
 ## [4.0.3] - 2024-01-03
 

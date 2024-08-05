@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace QuickEye.OneAsset.Editor.Tests.SampleAssets
 {
-    [LoadFromAsset(AbsoluteAssetPath, CreateAssetIfMissing = true)]
+    [LoadFromAsset(AbsoluteAssetPathWithExtension, CreateAssetIfMissing = true)]
     internal class SoWithCreateAutomatically : ScriptableObject
     {
-        public const string AbsoluteAssetPath =
+        public const string AbsoluteAssetPathWithExtension =
             TestUtils.TempDir
-            + "Resources/one-asset-tests/" + nameof(SoWithCreateAutomatically);
+            + "Resources/one-asset-tests/" + nameof(SoWithCreateAutomatically) + ".asset";
     }
 }

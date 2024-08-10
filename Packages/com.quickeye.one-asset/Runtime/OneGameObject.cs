@@ -96,7 +96,7 @@ namespace QuickEye.OneAsset
     /// </summary>
     // Execute Order allows us to execute Awake before all non-singletons
     // This allows other scripts to access initialized singletons in their awake methods.
-    [DefaultExecutionOrder(-10000)]
+    [DefaultExecutionOrder(-100)]
     public abstract class OneGameObject : MonoBehaviour
     {
         protected static bool IsAppQuitting;

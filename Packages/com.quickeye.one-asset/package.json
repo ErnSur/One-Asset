@@ -9,7 +9,7 @@
     {
       "displayName": "Usage of One classes",
       "description": "Basic usage of the OneScriptableObject and OneGameObject.",
-      "path": "Samples~/SingletonAssets"
+      "path": "Samples~/HowToUseSingletons"
     }
   ],
   "description": "Extended asset loader and the best singleton implementation for Unity."

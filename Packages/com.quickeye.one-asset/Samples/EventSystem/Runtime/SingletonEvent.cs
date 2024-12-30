@@ -22,6 +22,11 @@ namespace QuickEye.EventSystem
         {
             return Instance.SubscribeAndUnsubscribeOnDestroy(owner, callback);
         }
+        
+        public static GameEvent SubscribeAndUnsubscribeOnDestroy(GameObject owner, UnityAction callback)
+        {
+            return Instance.SubscribeAndUnsubscribeOnDestroy(owner, callback);
+        }
 
         public new static void Unsubscribe(UnityAction callback)
         {
@@ -49,8 +54,11 @@ namespace QuickEye.EventSystem
         {
             ((GameEvent<TArg>)Instance).Subscribe(callback);
         }
-        
         public static GameEvent<TArg> SubscribeAndUnsubscribeOnDestroy(MonoBehaviour owner, UnityAction<TArg> callback)
+        {
+            return Instance.SubscribeAndUnsubscribeOnDestroy(owner, callback);
+        }
+        public static GameEvent<TArg> SubscribeAndUnsubscribeOnDestroy(GameObject owner, UnityAction<TArg> callback)
         {
             return Instance.SubscribeAndUnsubscribeOnDestroy(owner, callback);
         }

@@ -9,7 +9,7 @@ namespace QuickEye.EventSystem
             MonoBehaviour owner, UnityAction callback, EventCallbackOption eventCallbackOption)
         {
             e.Subscribe(callback);
-            var eventMessenger = GetOrCreateCommonEventMessenger(owner);
+            var eventMessenger = GetOrCreateCommonEventMessenger(owner.gameObject);
 
             if (eventCallbackOption.HasFlag(EventCallbackOption.ExecuteWithLastPayload))
                 callback();
@@ -28,7 +28,7 @@ namespace QuickEye.EventSystem
             MonoBehaviour owner, UnityAction<T> callback, EventCallbackOption eventCallbackOption)
         {
             e.Subscribe(callback);
-            var eventMessenger = GetOrCreateCommonEventMessenger(owner);
+            var eventMessenger = GetOrCreateCommonEventMessenger(owner.gameObject);
 
             if (eventCallbackOption.HasFlag(EventCallbackOption.ExecuteWithLastPayload))
                 callback(e.LastPayload);
@@ -44,7 +44,11 @@ namespace QuickEye.EventSystem
         }
 
         public static GameEvent<T> SubscribeAndUnsubscribeOnDestroy<T>(this GameEvent<T> e,
-            MonoBehaviour owner, UnityAction<T> callback)
+            MonoBehaviour owner, UnityAction<T> callback) =>
+            SubscribeAndUnsubscribeOnDestroy(e, owner.gameObject, callback);
+
+        public static GameEvent<T> SubscribeAndUnsubscribeOnDestroy<T>(this GameEvent<T> e,
+                                                                       GameObject owner, UnityAction<T> callback)
         {
             e.Subscribe(callback);
             var eventMessenger = GetOrCreateCommonEventMessenger(owner);
@@ -53,7 +57,11 @@ namespace QuickEye.EventSystem
         }
 
         public static GameEvent SubscribeAndUnsubscribeOnDestroy(this GameEvent e,
-            MonoBehaviour owner, UnityAction callback)
+            MonoBehaviour owner, UnityAction callback) =>
+            SubscribeAndUnsubscribeOnDestroy(e, owner.gameObject, callback);
+
+        public static GameEvent SubscribeAndUnsubscribeOnDestroy(this GameEvent e,
+                                                                 GameObject owner, UnityAction callback)
         {
             e.Subscribe(callback);
             var eventMessenger = GetOrCreateCommonEventMessenger(owner);
@@ -65,7 +73,7 @@ namespace QuickEye.EventSystem
             MonoBehaviour owner, UnityAction<T> callback)
         {
             e.Subscribe(callback);
-            var eventMessenger = GetOrCreateCommonEventMessenger(owner);
+            var eventMessenger = GetOrCreateCommonEventMessenger(owner.gameObject);
             eventMessenger.Disabled += () => e.Unsubscribe(callback);
             return e;
         }
@@ -74,16 +82,16 @@ namespace QuickEye.EventSystem
             MonoBehaviour owner, UnityAction callback)
         {
             e.Subscribe(callback);
-            var eventMessenger = GetOrCreateCommonEventMessenger(owner);
+            var eventMessenger = GetOrCreateCommonEventMessenger(owner.gameObject);
             eventMessenger.Disabled += () => e.Unsubscribe(callback);
             return e;
         }
 
-        static CommonEventMessenger GetOrCreateCommonEventMessenger(MonoBehaviour owner)
+        private static CommonEventMessenger GetOrCreateCommonEventMessenger(GameObject owner)
         {
-            if (!owner.gameObject.TryGetComponent<CommonEventMessenger>(out var component))
+            if (!owner.TryGetComponent<CommonEventMessenger>(out var component))
             {
-                component = owner.gameObject.AddComponent<CommonEventMessenger>();
+                component = owner.AddComponent<CommonEventMessenger>();
             }
 
             return component;

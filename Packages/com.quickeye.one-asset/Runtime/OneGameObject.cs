@@ -33,8 +33,9 @@ namespace QuickEye.OneAsset
             if (_instance != this)
                 if (_instance != null || !(this is T))
                 {
+                    Debug.LogWarning($"Singleton of type {GetType()} already exists. Destroying \"{GetGameObjectPath(gameObject)}\"");
                     Destroy(gameObject);
-                    throw new SingletonAlreadyExistsException(this);
+                    return;
                 }
 
             ForceDontDestroyOnLoad();
@@ -87,6 +88,19 @@ namespace QuickEye.OneAsset
         {
             var obj = new GameObject { name = typeof(T).Name };
             return obj.AddComponent<T>();
+        }
+
+        private static string GetGameObjectPath(GameObject obj)
+        {
+            var path = $"/{obj.name}";
+            while (obj.transform.parent != null)
+            {
+                obj = obj.transform.parent.gameObject;
+                path = $"/{obj.name}{path}";
+            }
+
+            path = $"{obj.scene.name}{path}";
+            return path;
         }
     }
     

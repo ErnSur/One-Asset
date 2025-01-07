@@ -87,7 +87,7 @@ namespace QuickEye.EventSystem
 
         public void Invoke()
         {
-            Debug.Log($"[!] Invoke: {name}");
+            //Debug.Log($"[!] Invoke: {name}");
             Event?.Invoke();
             wasInvoked = true;
         }

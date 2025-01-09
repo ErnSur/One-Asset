@@ -114,6 +114,15 @@ namespace QuickEye.OneAsset
     public abstract class OneGameObject : MonoBehaviour
     {
         protected static bool IsAppQuitting;
+        
+        /// <remarks>
+        /// Reset static state to support play mode without assembly reload.
+        /// </remarks>
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void OnAppInit()
+        {
+            IsAppQuitting = false;
+        }
 
         protected virtual void OnApplicationQuit()
         {
